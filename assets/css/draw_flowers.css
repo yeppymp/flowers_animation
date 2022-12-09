@@ -1,0 +1,46 @@
+/* CREDIT */
+/* https://codepen.io/giaco/pen/LayaYm */
+
+body{
+  --t:.5;
+  --scale:3;
+
+  margin: 0;
+  min-height: 100vh;
+  width: 100vw;
+}
+svg.root{width:1px;height:1px;position:absolute;left:-100em;}
+svg{
+  width: 100vw;
+  height: 100vh;
+  background:#c5d9fe;
+  fill-opacity:0.75;
+}
+
+symbol{overflow:visible}
+
+svg use{transform:rotate(0deg); transition:transform calc(var(--t) * 1s);}
+
+svg g.a{transition:transform calc(var(--t) * 1s);}
+svg g.a{transform:scale(var(--scale)) rotate(-90deg);
+filter:url('#f')
+}
+
+
+._2{--n : 2;}
+._3{--n : 3;}
+._4{--n : 4;}
+._5{--n : 5;}
+
+svg .a g:nth-of-type(1){transform:rotate(calc(-.5 * 180deg / var(--n)));}
+svg .a g:nth-of-type(2){transform:rotate(calc( .5 * 180deg / var(--n)));}
+
+svg .a g:nth-of-type(1) use:nth-of-type(2){transform:rotate(calc(-1deg * 180 / var(--n)));}
+svg .a g:nth-of-type(1) use:nth-of-type(3){transform:rotate(calc(-2deg * 180 / var(--n)));}
+svg .a g:nth-of-type(1) use:nth-of-type(4){transform:rotate(calc(-3deg * 180 / var(--n)));}
+svg .a g:nth-of-type(1) use:nth-of-type(5){transform:rotate(calc(-4deg * 180 / var(--n)));}
+
+svg .a g:nth-of-type(2) use:nth-of-type(2){transform:rotate(calc(1deg * 180 / var(--n)));}
+svg .a g:nth-of-type(2) use:nth-of-type(3){transform:rotate(calc(2deg * 180 / var(--n)));}
+svg .a g:nth-of-type(2) use:nth-of-type(4){transform:rotate(calc(3deg * 180 / var(--n)));}
+svg .a g:nth-of-type(2) use:nth-of-type(5){transform:rotate(calc(4deg * 180 / var(--n)));}
