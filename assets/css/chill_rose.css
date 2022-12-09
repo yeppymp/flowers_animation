@@ -1,0 +1,473 @@
+/* CREDIT */
+/* https://codepen.io/navin_moorthy/pen/ExYOjvO */
+
+body,
+html {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background: #060b12;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.back {
+  margin-top: 2.5rem;
+  color: white;
+}
+
+.glass {
+  background: #122139;
+  height: 350px;
+  width: 200px;
+  border-radius: 300px 300px 0px 0px;
+  position: relative;
+  border: 3px solid rgba(255, 255, 255, 0.5);
+  border-bottom: none;
+}
+.glass:after {
+  content: "";
+  position: absolute;
+  height: 15px;
+  width: 206px;
+  background: rgba(255, 255, 255, 0.5);
+  top: 100%;
+  left: -3px;
+}
+.glass .shine {
+  width: 8px;
+  height: 100px;
+  background: white;
+  opacity: 0.2;
+  border-radius: 10px;
+  position: absolute;
+  top: 80px;
+  left: 85%;
+}
+.glass .shine:after {
+  content: "";
+  width: 8px;
+  height: 20px;
+  background: white;
+  border-radius: 10px;
+  position: absolute;
+  top: 115%;
+}
+
+.leaves {
+  position: relative;
+  top: -354px;
+  left: -6px;
+}
+.leaves > div:nth-last-child(1) {
+  position: absolute;
+  width: 55px;
+  height: 30px;
+  background: #338f37;
+  top: 120px;
+  left: 75px;
+  border-radius: 10px;
+}
+.leaves > div:nth-child(1) {
+  position: absolute;
+  width: 6px;
+  height: 210px;
+  background: #054c05;
+  top: 95px;
+  left: 100px;
+  border-radius: 0 0 100px 100px;
+}
+.leaves > div:nth-child(2) {
+  position: absolute;
+  width: 30px;
+  height: 50px;
+  top: 53px;
+  border-radius: 5px 40px 20px 40px;
+  background: #054c05;
+  transform-origin: bottom;
+  transform: rotate(-30deg);
+  top: 180px;
+  left: 80px;
+  box-shadow: inset 5px 5px #066406;
+}
+.leaves > div:nth-child(3) {
+  position: absolute;
+  width: 30px;
+  height: 50px;
+  top: 53px;
+  border-radius: 40px 5px 40px 20px;
+  background: #054c05;
+  transform-origin: bottom;
+  transform: rotate(30deg);
+  top: 150px;
+  left: 95px;
+  box-shadow: inset -5px 5px #066406;
+}
+
+.thorns {
+  position: relative;
+  top: -350px;
+  left: -6px;
+}
+.thorns > div {
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: 140px;
+}
+.thorns > div:nth-child(odd) {
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid #054c05;
+  left: 105px;
+}
+.thorns > div:nth-child(even) {
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-right: 5px solid #054c05;
+  left: 95px;
+}
+.thorns > div:nth-child(1) {
+  top: 200px;
+}
+.thorns > div:nth-child(2) {
+  top: 170px;
+}
+.thorns > div:nth-child(4) {
+  top: 230px;
+}
+
+.petals {
+  position: relative;
+  top: -335px;
+  left: -6px;
+}
+.petals > div {
+  position: absolute;
+  background: #d52d58;
+  width: 45px;
+  height: 60px;
+  top: 55px;
+  transition: all 0.5s ease-out;
+}
+.petals > div:nth-child(1) {
+  border-radius: 15px;
+  left: 80px;
+  top: 60px;
+  box-shadow: 0px 0px 30px #f594b8;
+}
+.petals > div:nth-child(2),
+.petals > div:nth-child(4),
+.petals > div:nth-child(6) {
+  background: #b81b43;
+  left: 60px;
+  border-radius: 0px 30px 0px 30px;
+  transform-origin: bottom right;
+}
+.petals > div:nth-child(3),
+.petals > div:nth-child(5),
+.petals > div:nth-child(7) {
+  background: #b81b43;
+  left: 100px;
+  border-radius: 30px 0px 30px 0px;
+  transform-origin: bottom left;
+}
+.petals > div:nth-child(2) {
+  z-index: 5;
+  background: #ab1a3f;
+  top: 75px;
+  height: 60px;
+  box-shadow: 0px 0px 50px rgba(245, 148, 184, 0.5);
+  z-index: -2;
+  animation: bloom2 5s ease-in-out 5s;
+  animation-fill-mode: forwards;
+}
+.petals > div:nth-child(3) {
+  z-index: 4;
+  background: #ab1a3f;
+  top: 75px;
+  height: 60px;
+  box-shadow: 0px 0px 50px rgba(245, 148, 184, 0.5);
+  z-index: -3;
+  animation: bloom3 5s ease-in-out 23s;
+  animation-fill-mode: forwards;
+}
+.petals > div:nth-child(4) {
+  z-index: 3;
+  background: #b81b43;
+  top: 70px;
+  height: 65px;
+  box-shadow: 0px 0px 50px rgba(245, 148, 184, 0.5);
+  animation: bloom4 3s ease-in-out infinite alternate, glowing 2.5s ease-in-out infinite;
+  animation-fill-mode: forwards;
+}
+.petals > div:nth-child(5) {
+  z-index: 2;
+  background: #b81b43;
+  top: 70px;
+  height: 65px;
+  box-shadow: 0px 0px 50px rgba(245, 148, 184, 0.5);
+  animation: bloom5 3s ease-in-out infinite alternate, glowing 2.5s ease-in-out infinite;
+  animation-fill-mode: forwards;
+}
+.petals > div:nth-child(6) {
+  z-index: 1;
+  background: #c9204b;
+  top: 65px;
+  height: 60px;
+  box-shadow: 0px 0px 50px rgba(245, 148, 184, 0.3);
+  animation: bloom6 3s ease-in-out infinite alternate, glowing 2.5s ease-in-out infinite;
+  animation-fill-mode: forwards;
+}
+.petals > div:nth-child(7) {
+  z-index: 0;
+  background: #c9204b;
+  top: 65px;
+  height: 60px;
+  box-shadow: 0px 0px 50px rgba(245, 148, 184, 0.3);
+  animation: bloom7 3s ease-in-out infinite alternate, glowing 2.5s ease-in-out infinite;
+  animation-fill-mode: forwards;
+}
+
+.deadPetals {
+  position: relative;
+  top: -350px;
+  left: -6px;
+}
+.deadPetals > div {
+  position: absolute;
+  width: 20px;
+  height: 15px;
+  top: 120px;
+  background: #d52d58;
+  border-radius: 0px 30px 0px 30px;
+  transform: rotate(-30deg);
+  box-shadow: 0px 0px 30px rgba(245, 148, 184, 0.5);
+}
+.deadPetals > div:nth-child(1) {
+  left: 89px;
+  animation: falling 20s 4s ease-in-out infinite;
+}
+.deadPetals > div:nth-child(2) {
+  left: 89px;
+  animation: falling 20s 8s ease-in-out infinite;
+}
+.deadPetals > div:nth-child(3) {
+  left: 69px;
+  animation: falling 20s 12s ease-in-out infinite;
+}
+.deadPetals > div:nth-child(4) {
+  left: 94px;
+  animation: falling 20s 16s ease-in-out infinite;
+}
+
+.sparkles {
+  position: relative;
+}
+.sparkles > div {
+  position: absolute;
+  z-index: 999;
+  width: 2px;
+  height: 2px;
+  border-radius: 100px;
+  background: #ff96c0;
+  box-shadow: 0px 0px 12px 2px #ff4e85;
+  bottom: 0;
+  opacity: 0;
+}
+.sparkles > div:nth-child(1) {
+  left: 81px;
+  animation: sparkle 10s ease-in-out 0.5s infinite;
+}
+.sparkles > div:nth-child(2) {
+  left: 178px;
+  animation: sparkle 10s ease-in-out 1s infinite;
+}
+.sparkles > div:nth-child(3) {
+  left: 122px;
+  animation: sparkle 10s ease-in-out 1.5s infinite;
+}
+.sparkles > div:nth-child(4) {
+  left: 113px;
+  animation: sparkle 10s ease-in-out 2s infinite;
+}
+.sparkles > div:nth-child(5) {
+  left: 134px;
+  animation: sparkle 10s ease-in-out 2.5s infinite;
+}
+.sparkles > div:nth-child(6) {
+  left: 97px;
+  animation: sparkle 10s ease-in-out 3s infinite;
+}
+.sparkles > div:nth-child(7) {
+  left: 127px;
+  animation: sparkle 10s ease-in-out 3.5s infinite;
+}
+.sparkles > div:nth-child(8) {
+  left: 162px;
+  animation: sparkle 10s ease-in-out 4s infinite;
+}
+.sparkles > div:nth-child(9) {
+  left: 129px;
+  animation: sparkle 10s ease-in-out 4.5s infinite;
+}
+.sparkles > div:nth-child(10) {
+  left: 57px;
+  animation: sparkle 10s ease-in-out 5s infinite;
+}
+.sparkles > div:nth-child(11) {
+  left: 33px;
+  animation: sparkle 10s ease-in-out 5.5s infinite;
+}
+.sparkles > div:nth-child(12) {
+  left: 117px;
+  animation: sparkle 10s ease-in-out 6s infinite;
+}
+.sparkles > div:nth-child(13) {
+  left: 96px;
+  animation: sparkle 10s ease-in-out 6.5s infinite;
+}
+.sparkles > div:nth-child(14) {
+  left: 124px;
+  animation: sparkle 10s ease-in-out 7s infinite;
+}
+.sparkles > div:nth-child(15) {
+  left: 114px;
+  animation: sparkle 10s ease-in-out 7.5s infinite;
+}
+.sparkles > div:nth-child(16) {
+  left: 88px;
+  animation: sparkle 10s ease-in-out 8s infinite;
+}
+.sparkles > div:nth-child(17) {
+  left: 20px;
+  animation: sparkle 10s ease-in-out 8.5s infinite;
+}
+.sparkles > div:nth-child(18) {
+  left: 92px;
+  animation: sparkle 10s ease-in-out 9s infinite;
+}
+.sparkles > div:nth-child(19) {
+  left: 157px;
+  animation: sparkle 10s ease-in-out 9.5s infinite;
+}
+.sparkles > div:nth-child(20) {
+  left: 55px;
+  animation: sparkle 10s ease-in-out 10s infinite;
+}
+
+@keyframes sparkle {
+  0% {
+    opacity: 0;
+    transform: scale(1.5);
+  }
+  15% {
+    opacity: 1;
+  }
+  30% {
+    bottom: 290px;
+    opacity: 0;
+  }
+}
+@keyframes bloom2 {
+  0% {
+    z-index: 10;
+  }
+  25% {
+    transform: rotate(-100deg);
+    top: 100px;
+    left: 130px;
+  }
+  50% {
+    transform: rotate(-40deg);
+    top: 150px;
+    left: 50px;
+  }
+  75% {
+    transform: rotate(-80deg);
+    top: 200px;
+    left: 130px;
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(-60deg);
+    top: 252px;
+    left: 50px;
+    background: #71122a;
+    opacity: 0;
+    z-index: 10;
+    box-shadow: 0px 0px 0px rgba(245, 148, 184, 0);
+  }
+}
+@keyframes bloom3 {
+  0% {
+    z-index: 10;
+  }
+  25% {
+    transform: rotate(100deg);
+    top: 100px;
+    left: 50px;
+  }
+  50% {
+    transform: rotate(40deg);
+    top: 150px;
+    left: 120px;
+  }
+  75% {
+    transform: rotate(80deg);
+    top: 200px;
+    left: 50px;
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(50deg);
+    top: 252px;
+    left: 130px;
+    background: #71122a;
+    opacity: 0;
+    z-index: 10;
+    box-shadow: 0px 0px 0px rgba(245, 148, 184, 0);
+  }
+}
+@keyframes bloom4 {
+  100% {
+    transform: rotate(-20deg);
+  }
+}
+@keyframes bloom5 {
+  100% {
+    transform: rotate(20deg);
+  }
+}
+@keyframes bloom6 {
+  100% {
+    transform: rotate(-5deg);
+  }
+}
+@keyframes bloom7 {
+  100% {
+    transform: rotate(5deg);
+  }
+}
+@keyframes glowing {
+  50% {
+    background: #d7365f;
+    box-shadow: 0px 0px 60px #f594b8;
+  }
+}
+@keyframes falling {
+  20% {
+    top: 337px;
+    background: #9d193b;
+    box-shadow: 0px 0px 0px rgba(245, 148, 184, 0);
+  }
+  100% {
+    top: 337px;
+    opacity: 0;
+  }
+}

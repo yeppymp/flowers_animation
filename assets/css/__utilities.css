@@ -1,0 +1,21 @@
+/* CSS COLORS */
+:root {
+  --text: #144b86;
+  --primary: #ABD9FF;
+  --primary-dark: #558bb7;
+  --primary-light: #C3F8FF;
+  --secondary: #FFEBAD;
+  --secondary-light: #FFF6BF;
+}
+/* END CSS COLORS */
+
+.title {
+  color: var(--text);
+  font-weight: bold;
+}
+.title-xl {
+  font-size: 2rem;
+}
+.title-lg {
+  font-size: 1.5rem;
+}
